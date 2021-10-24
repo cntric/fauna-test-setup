@@ -1,7 +1,7 @@
 # fauna-test-setup
 A package for setting up [Fauna Dev](https://docs.fauna.com/fauna/current/integrations/dev) servers with minimal hassel.
 
-`yarn add https://github.com/concentricio/fauna-test-setup`
+`yarn add --dev https://github.com/concentricio/fauna-test-setup`
 
 ## Motivation
 The process of setting up [Fauna Dev](https://docs.fauna.com/fauna/current/integrations/dev) servers to test Fauna logic can be cumbersome and detached from the actual development of test suites. This package automates test server setup, so you can do it inline and in a single line.
