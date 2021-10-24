@@ -13,7 +13,7 @@ const testDb = await FaunaTestDb();
 Besides this package, you only need to make sure you have [Docker](https://www.docker.com/) installed and running.   
 
 ## Setup
-You can create a database for testing against a Fauna development server by doing the following; no need for additional setup:
+You can create a database and test against a Fauna development server by doing the following; no need for additional setup:
 ```typescript
 import {FaunaTestDB} from "fauna-test-setup";
 
