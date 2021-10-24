@@ -39,7 +39,7 @@ If needed, `FaunaTestDb()` will automatically...
 
 By default, `FaunaTestDb()` will...
 - reuse Docker containers running with the `fauna/faunadb` image,
-- resuse endpoints deployed on the desired port,
+- reuse endpoints deployed on the desired port,
 - NOT reuse previous test databases.
 
 ## Tearing down the test environment
