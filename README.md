@@ -47,6 +47,7 @@ By default, `FaunaTestDb()` will...
 ## FaunaTestDb Teardown
 `fauna-test-setup` will **NOT** automatically tear down your testing environment. However, a `teardown()` method is provided.
 ```typescript
+import {teardown} from "fauna-test-setup";
 // Jest example
 afterAll(async ()=>{
   await teardown();
