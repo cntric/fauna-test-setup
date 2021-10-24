@@ -45,7 +45,7 @@ By default, `FaunaTestDb()` will...
 - NOT reuse previous test databases.
 
 ## FaunaTestDb Teardown
-`fauna-test-setup` will not automatically tear down your testing environment. However, a `teardown()` method is provided.
+`fauna-test-setup` will **NOT** automatically tear down your testing environment. However, a `teardown()` method is provided.
 ```typescript
 // Jest example
 afterAll(async ()=>{
