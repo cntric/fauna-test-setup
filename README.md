@@ -29,7 +29,7 @@ describe("Basic functionality", ()=>{
             expect(result).toBe(4)
 
         }, 5000)
- }
+})
 ```
 ### Automation
 If needed, `FaunaTestDb()` will automatically...
