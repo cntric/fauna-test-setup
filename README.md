@@ -1,5 +1,5 @@
 # fauna-test-setup
-A package for setting up Fauna test development servers with minimal hassel.
+A package for setting up [Fauna Dev](https://docs.fauna.com/fauna/current/integrations/dev) servers with minimal hassel.
 
 `yarn add https://github.com/concentricio/fauna-test-setup`
 
