@@ -55,11 +55,11 @@ afterAll(async ()=>{
 ```
 ### Default
 By default, `teardown()` will...
-- delete any test databases allocated during the running of the application.
+- delete any test databases used during the running of the application.
 
 ### Additional
 `teardown()` can additionally be configured to...
-- delete Fauna endpoints created within or without the context of the application,
+- delete Fauna endpoints within or without the context of the application,
 - remove `fauna/faunadb` Docker containers within or without the context of the application.
 
 ## Docs
