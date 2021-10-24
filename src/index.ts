@@ -1,1 +1,1 @@
-export * from "./Funcitons";
+export * from "./FaunaDevTests";

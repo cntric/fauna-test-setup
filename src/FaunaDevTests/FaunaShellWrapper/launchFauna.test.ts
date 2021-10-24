@@ -1,4 +1,4 @@
-import { FaunaContainer, FaunaDocker} from "./launchFauna";
+import { FaunaContainer, FaunaDocker, tearDownFaunaContainer, tearDownFaunaContainers} from "./launchFauna";
 import {
     query,
     Client
@@ -27,6 +27,12 @@ export const FolderHasItemTestSuiteA = ()=>{
                expect(containerFetch[0].Id).toBe(out.container.id);
 
             }, 100000)
+
+            afterAll(async ()=>{
+
+                await tearDownFaunaContainers();
+
+            })
         
     })
 

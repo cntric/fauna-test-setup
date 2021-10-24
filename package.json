@@ -1,7 +1,7 @@
 {
-  "name": "fauna-dev-tests",
+  "name": "fauna-test-setup",
   "version": "0.1.0",
-  "description": "A package for running tests against the Fauna development server.",
+  "description": "A package for setting up the fauna devlopment server.",
   "main": "dist/cjs/index.js",
   "module": "dist/mjs/index.js",
   "exports": {
@@ -28,18 +28,24 @@
     "determinismus": "https://github.com/concentricio/determinismus",
     "jest": "^27.1.1",
     "nodemon": "^2.0.12",
+    "ping": "^0.4.1",
     "tulleries": "https://github.com/concentricio/tulleries",
     "typescript": "^4.4.2"
   },
   "dependencies": {
     "@types/dockerode": "^3.3.0",
+    "@types/ini": "^1.3.31",
     "@types/node": "^16.9.1",
+    "@types/node-fetch": "^3.0.3",
+    "@types/request-promise": "^4.1.48",
     "@types/shortid": "^0.0.29",
     "child_process": "^1.0.2",
     "dockerode": "^3.3.1",
     "fauna-shell": "^0.12.6",
     "faunadb": "^4.4.1",
     "http-server": "^13.0.2",
+    "ini": "^2.0.0",
+    "request-promise": "^4.2.6",
     "shortid": "^2.2.16",
     "typedoc": "^0.22.4"
   }

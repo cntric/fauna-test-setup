@@ -1,1 +1,1 @@
-export * from "./FaunaDevTests";
+export * from "./FaunaShellWrapper";
