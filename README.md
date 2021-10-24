@@ -4,9 +4,7 @@ A package for setting up Fauna test development servers with minimal hassel.
 `yarn add https://github.com/concentricio/fauna-test-setup`
 
 ## Motivation
-The process of setting up development servers to test Fauna logic can be cumbersome and detached from the actual development of test suites. This package automates test server setup.
-
-With this package you can create test databases on the fly, without having to worry about what's going on behind the scenes.
+The process of setting up development servers to test Fauna logic can be cumbersome and detached from the actual development of test suites. This package automates test server setup, so you can do it inline and in a single line.
 
 ```typescript
 const testDb = await FaunaTestDb();
