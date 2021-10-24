@@ -60,3 +60,6 @@ By default, `teardown()` will...
 `teardown()` can additionally be configured to...
 - delete Fauna endpoints created within or without the context of the application,
 - remove `fauna/faunadb` Docker containers within or without the context of the application.
+
+## Docs
+From within the package directory, `yarn run docs`.
