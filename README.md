@@ -15,7 +15,7 @@ const testDb = await FaunaTestDb();
 
 Besides this package, you only need to make sure you have [Docker](https://www.docker.com/) installed and running.   
 
-## <a name="FaunaTestDb">`FaunaTestDb`</a>
+## <a name="FaunaTestDb">`FaunaTestDb()`</a>
 You can create a database and test against it without any additional setup:
 ```typescript
 import {FaunaTestDB} from "fauna-test-setup";
@@ -47,9 +47,7 @@ By default, `FaunaTestDb()` will...
 - reuse endpoints deployed on the desired port,
 - NOT reuse previous test databases.
 
-<a name="teardown">
-## `teardown`
-</a>
+## <a name="teardown">`teardown()`</a>
 `fauna-test-setup` will **NOT** automatically tear down your testing environment. However, a `teardown()` method is provided.
 ```typescript
 import {teardown} from "fauna-test-setup";
