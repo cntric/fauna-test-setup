@@ -3,6 +3,9 @@ A package for setting up [Fauna Dev](https://docs.fauna.com/fauna/current/integr
 
 `yarn add --dev https://github.com/concentricio/fauna-test-setup`
 
+- [`FaunaTestDb()`](#FaunaTestDb)
+- [`teardown()`](#teardown)
+
 ## Motivation
 The process of setting up [Fauna Dev](https://docs.fauna.com/fauna/current/integrations/dev) servers to test Fauna logic can be cumbersome and detached from the actual development of test suites. This package automates test server setup, so you can do it inline and in a single line.
 
@@ -12,7 +15,9 @@ const testDb = await FaunaTestDb();
 
 Besides this package, you only need to make sure you have [Docker](https://www.docker.com/) installed and running.   
 
-## `FaunaTestDb()`
+<a name="FaunaTestDb">
+## `FaunaTestDb`
+</a>
 You can create a database and test against it without any additional setup:
 ```typescript
 import {FaunaTestDB} from "fauna-test-setup";
@@ -44,7 +49,9 @@ By default, `FaunaTestDb()` will...
 - reuse endpoints deployed on the desired port,
 - NOT reuse previous test databases.
 
+<a name="teardown">
 ## `teardown`
+</a>
 `fauna-test-setup` will **NOT** automatically tear down your testing environment. However, a `teardown()` method is provided.
 ```typescript
 import {teardown} from "fauna-test-setup";
