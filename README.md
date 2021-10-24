@@ -31,12 +31,14 @@ describe("Basic functionality", ()=>{
         }, 5000)
  }
 ```
+### Automation
 If needed, `FaunaTestDb()` will automatically...
 - pull the `fauna/faunadb` Docker image,
 - deploy a container with the `fauna/faunadb` Docker image,
 - create a Fauna endpoint and forward it to the desired port,
 - create a test database.
 
+### Reuse
 By default, `FaunaTestDb()` will...
 - reuse Docker containers running with the `fauna/faunadb` image,
 - reuse endpoints deployed on the desired port,
@@ -50,9 +52,11 @@ afterAll(async ()=>{
   await teardown();
 })
 ```
+### Default
 By default, `teardown()` will...
 - delete any test databases allocated during the running of the application.
 
+### Additional
 `teardown()` can additionally be configured to...
 - delete Fauna endpoints created within or without the context of the application,
 - remove `fauna/faunadb` Docker containers within or without the context of the application.
