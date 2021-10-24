@@ -42,7 +42,7 @@ By default, `FaunaTestDb()` will...
 - reuse endpoints deployed on the desired port,
 - NOT reuse previous test databases.
 
-## Tearing down the test environment
+## Teardown
 This `fauna-test-setup` will not automatically tear down your testing environment. However, a `teardown()` method is provided.
 ```typescript
 // Jest example
