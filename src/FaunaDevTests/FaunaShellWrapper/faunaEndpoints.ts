@@ -141,10 +141,6 @@ function addEndpoint(
 function deleteEndpoint(endpoints : FaunaConfigI, alias : string) {
     if (endpoints.default === alias) {
       delete endpoints.default
-      
-        `Endpoint '${alias}' deleted. '${alias}' was the default endpoint.`
-      )
-      
     }
     delete endpoints[alias]
     return saveConfig(endpoints)

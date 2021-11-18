@@ -86,8 +86,6 @@ function addEndpoint(config, endpoint, alias, secret) {
 function deleteEndpoint(endpoints, alias) {
     if (endpoints.default === alias) {
         delete endpoints.default;
-        console.log(`Endpoint '${alias}' deleted. '${alias}' was the default endpoint.`);
-        console.log(ERROR_NO_DEFAULT_ENDPOINT);
     }
     delete endpoints[alias];
     return saveConfig(endpoints);

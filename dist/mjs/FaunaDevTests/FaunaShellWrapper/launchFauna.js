@@ -103,7 +103,6 @@ export const getAvailableFaunaContainerFromMachine = async () => {
     const fauna = containers.filter((container) => {
         return container.Labels.fauna === FaunaName && container.State === "running";
     });
-    console.log(fauna);
     const container = fauna.length ? docker.getContainer(fauna[0].Id) : undefined;
     if (!container) {
         return undefined;
