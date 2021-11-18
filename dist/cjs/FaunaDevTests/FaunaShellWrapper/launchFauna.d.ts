@@ -1,6 +1,7 @@
 /// <reference types="node" />
 import { Writable } from "stream";
 import Docker, { Container } from "dockerode";
+export declare const FaunaDockerImage = "fauna/faunadb:latest";
 export declare const FaunaDocker = "fauna/faunadb";
 export declare const FaunaName = "faunadb";
 export declare const ReadyMatch: RegExp;

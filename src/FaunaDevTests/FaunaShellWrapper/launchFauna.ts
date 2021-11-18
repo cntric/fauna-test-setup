@@ -4,6 +4,7 @@ import Docker, { Container } from "dockerode";
 import { PageantAgent } from "ssh2";
 import { generate } from "shortid";
 
+export const FaunaDockerImage = "fauna/faunadb:latest";
 export const FaunaDocker = "fauna/faunadb";
 export const FaunaName = "faunadb";
 export const ReadyMatch = /FaunaDB is ready./;
@@ -60,7 +61,7 @@ export const faunaExists = async (docker : Docker) : Promise<boolean>=>{
 
     const images = await docker.listImages();;
     const matches = images.filter((image)=>{
-        return image.RepoTags.includes(FaunaDocker);
+        return image.RepoTags ? image.RepoTags.includes(FaunaDockerImage) : false;
     });
     return matches.length > 0;
 
@@ -154,9 +155,10 @@ export const getAvailableFaunaContainerFromMachine = async () : Promise<FaunaCon
     const docker = new Docker();
     const containers = await docker.listContainers();
     const fauna = containers.filter((container)=>{
-        return container.Image === FaunaDocker && container.State === "running";
+        return container.Labels.fauna === FaunaName && container.State === "running";
     });
-    
+    console.log(fauna);
+
     const container = fauna.length ? docker.getContainer(fauna[0].Id) : undefined;
 
     if(!container){
@@ -241,6 +243,9 @@ export const _FaunaContainer = async (
     const container = await docker.createContainer({
         Image : FaunaDocker,
         name : name,
+        Labels : {
+            fauna : FaunaName
+        },
         ...options
     });
 
@@ -298,7 +303,7 @@ export const tearDownMachineContainers = async ()=>{
     const docker = new Docker();
     const containers = await docker.listContainers();
     await Promise.all(containers.filter((container)=>{
-        return container.Image === FaunaDocker;
+        return container.Image === FaunaDockerImage;
     }).map(async (container)=>{
         const _container = await docker.getContainer(container.Id);
         await tearDownFaunaContainer(_container);

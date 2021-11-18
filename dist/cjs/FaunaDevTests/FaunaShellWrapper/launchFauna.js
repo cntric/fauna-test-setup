@@ -23,10 +23,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.tearDownFaunaContainers = exports.tearDownUsedContainers = exports.tearDownMachineContainers = exports.tearDownFaunaContainer = exports.FaunaContainer = exports._FaunaContainer = exports.addToUsedContainers = exports.getAvailableFaunaContainer = exports.getAvailableFaunaContainerFromMachine = exports.attachToFaunaContainer = exports.ContainerStore = exports.faunaExists = exports.isIdentified = exports.isReady = exports.MainStream = exports.DefaultPort = exports.IdentificationMatch = exports.ReadyMatch = exports.FaunaName = exports.FaunaDocker = void 0;
+exports.tearDownFaunaContainers = exports.tearDownUsedContainers = exports.tearDownMachineContainers = exports.tearDownFaunaContainer = exports.FaunaContainer = exports._FaunaContainer = exports.addToUsedContainers = exports.getAvailableFaunaContainer = exports.getAvailableFaunaContainerFromMachine = exports.attachToFaunaContainer = exports.ContainerStore = exports.faunaExists = exports.isIdentified = exports.isReady = exports.MainStream = exports.DefaultPort = exports.IdentificationMatch = exports.ReadyMatch = exports.FaunaName = exports.FaunaDocker = exports.FaunaDockerImage = void 0;
 const stream_1 = require("stream");
 const dockerode_1 = __importDefault(require("dockerode"));
 const shortid_1 = require("shortid");
+exports.FaunaDockerImage = "fauna/faunadb:latest";
 exports.FaunaDocker = "fauna/faunadb";
 exports.FaunaName = "faunadb";
 exports.ReadyMatch = /FaunaDB is ready./;
@@ -77,7 +78,7 @@ const faunaExists = (docker) => __awaiter(void 0, void 0, void 0, function* () {
     const images = yield docker.listImages();
     ;
     const matches = images.filter((image) => {
-        return image.RepoTags.includes(exports.FaunaDocker);
+        return image.RepoTags ? image.RepoTags.includes(exports.FaunaDockerImage) : false;
     });
     return matches.length > 0;
 });
@@ -129,8 +130,9 @@ const getAvailableFaunaContainerFromMachine = () => __awaiter(void 0, void 0, vo
     const docker = new dockerode_1.default();
     const containers = yield docker.listContainers();
     const fauna = containers.filter((container) => {
-        return container.Image === exports.FaunaDocker && container.State === "running";
+        return container.Labels.fauna === exports.FaunaName && container.State === "running";
     });
+    console.log(fauna);
     const container = fauna.length ? docker.getContainer(fauna[0].Id) : undefined;
     if (!container) {
         return undefined;
@@ -187,7 +189,9 @@ const _FaunaContainer = (options) => __awaiter(void 0, void 0, void 0, function*
         yield docker.pull(exports.FaunaDocker);
     }
     const name = `${exports.FaunaName}-${(0, shortid_1.generate)()}`;
-    const container = yield docker.createContainer(Object.assign({ Image: exports.FaunaDocker, name: name }, options));
+    const container = yield docker.createContainer(Object.assign({ Image: exports.FaunaDocker, name: name, Labels: {
+            fauna: exports.FaunaName
+        } }, options));
     const out = (0, exports.attachToFaunaContainer)({
         docker: docker,
         container: container,
@@ -228,7 +232,7 @@ const tearDownMachineContainers = () => __awaiter(void 0, void 0, void 0, functi
     const docker = new dockerode_1.default();
     const containers = yield docker.listContainers();
     yield Promise.all(containers.filter((container) => {
-        return container.Image === exports.FaunaDocker;
+        return container.Image === exports.FaunaDockerImage;
     }).map((container) => __awaiter(void 0, void 0, void 0, function* () {
         const _container = yield docker.getContainer(container.Id);
         yield (0, exports.tearDownFaunaContainer)(_container);
